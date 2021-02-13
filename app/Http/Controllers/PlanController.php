@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Plan;
 use App\User;
+use Hyn\Tenancy\Models\Hostname;
+use Hyn\Tenancy\Models\Website;
+use Hyn\Tenancy\Repositories\HostnameRepository;
+use Hyn\Tenancy\Repositories\WebsiteRepository;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
@@ -101,9 +105,9 @@ class PlanController extends Controller
      * @throws \Illuminate\Validation\ValidationException
      */
     public function purchase () {
-        if ( ! auth()->user()->hasPaymentMethod()) {
-            return back()->with('message', ['danger', __('No sabemos cómo has llegado hasta aquí, ¡añade una tarjeta para contratar un plan!')]);
-        }
+//        if ( ! auth()->user()->hasPaymentMethod()) {
+//            return back()->with('message', ['danger', __('No sabemos cómo has llegado hasta aquí, ¡añade una tarjeta para contratar un plan!')]);
+//        }
 
         $planId = (int) request("plan");
         $fqdn = sprintf('%s.%s', request('fqdn'), env('APP_DOMAIN'));
@@ -126,7 +130,17 @@ class PlanController extends Controller
                 $user = User::find(auth()->id());
                 $user->fqdn = request('fqdn');
                 $user->save();
-                $user->newSubscription('main', $plan->slug)->create();
+//                $user->newSubscription('main', $plan->slug)->create();
+
+                $website = new Website;
+                $website->uuid = $user->fqdn;
+                app(WebsiteRepository::class)->create($website);
+                $hostname = new Hostname;
+                $hostname->fqdn = $fqdn;
+                $hostname->user_id = $user->id;
+                $hostname = app(HostnameRepository::class)->create($hostname);
+                app(HostnameRepository::class)->attach($hostname, $website);
+
                 return redirect(route("plans.index"))->with('message', ['info', __('Te has suscrito al plan ' . $plan->nickname . ' correctamente, recuerda revisar tu correo electrónico por si es necesario confirmar el pago')]);
             } else {
                 return back()->with('message', ['info', __('El plan seleccionado parece no estar disponible')]);
@@ -144,6 +158,7 @@ class PlanController extends Controller
 
         return abort(401);
     }
+
 
     /**
      *
