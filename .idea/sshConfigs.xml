@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SshConfigs">
+    <configs>
+      <sshConfig host="18.231.153.151" id="64ea8f73-9fb8-4b65-95bd-76e33a16d0c3" keyPath="$USER_HOME$/Documents/LLAVES SERVIDOR/Lalabag/id_rsa" port="22" nameFormat="DESCRIPTIVE" username="forge" />
+    </configs>
+  </component>
+</project>

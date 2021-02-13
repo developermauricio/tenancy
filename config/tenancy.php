@@ -183,8 +183,8 @@ return [
          * @var system-connection-name The database connection name to use for the global/system database.
          * @var tenant-connection-name The database connection name to use for the tenant database.
          */
-//        'system-connection-name' => env('TENANCY_SYSTEM_CONNECTION_NAME', Connection::DEFAULT_SYSTEM_NAME),
-//        'tenant-connection-name' => env('TENANCY_TENANT_CONNECTION_NAME', Connection::DEFAULT_TENANT_NAME),
+        'system-connection-name' => env('TENANCY_SYSTEM_CONNECTION_NAME', Connection::DEFAULT_SYSTEM_NAME),
+        'tenant-connection-name' => env('TENANCY_TENANT_CONNECTION_NAME', Connection::DEFAULT_TENANT_NAME),
 
         /**
          * The tenant division mode specifies to what database websites will be

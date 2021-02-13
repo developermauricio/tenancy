@@ -20,14 +20,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="eb91f796-3dda-4008-a7af-eb27f3c388ae" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/tenancy.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/tenancy.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/auth/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/login.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings" synchronizationState="SYNCHRONIZE">
+  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution />
   </component>
@@ -196,7 +198,9 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1613161964862</updated>
-      <workItem from="1613161966202" duration="2856000" />
+      <workItem from="1613161966202" duration="3007000" />
+      <workItem from="1613181724604" duration="416000" />
+      <workItem from="1613220221184" duration="394000" />
     </task>
     <servers />
   </component>
@@ -213,11 +217,17 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="2000" y="202" key="#Deployment" timestamp="1613165565458">
-      <screen x="1440" y="0" width="1920" height="1080" />
+    <state x="420" y="168" key="#Deployment" timestamp="1613181921946">
+      <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="2000" y="202" key="#Deployment/0.0.1440.900/1440.0.1920.1080@1440.0.1920.1080" timestamp="1613165565458" />
+    <state x="420" y="168" key="#Deployment/0.0.1440.900@0.0.1440.900" timestamp="1613181921946" />
+    <state x="404" y="155" key="#SSH_Configurations" timestamp="1613181912708">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="404" y="155" key="#SSH_Configurations/0.0.1440.900@0.0.1440.900" timestamp="1613181912708" />
   </component>
 </project>
