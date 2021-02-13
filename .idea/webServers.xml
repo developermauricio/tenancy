@@ -3,7 +3,7 @@
   <component name="WebServers">
     <option name="servers">
       <webServer id="7287b7f6-b230-4371-9b8c-e26c59760c49" name="creategica aws">
-        <fileTransfer accessType="SFTP" host="18.231.153.151" port="22" sshConfigId="64ea8f73-9fb8-4b65-95bd-76e33a16d0c3" sshConfig="forge@18.231.153.151:22 key" keyPair="true">
+        <fileTransfer rootFolder="/home/forge/test-mauro.site" accessType="SFTP" host="18.231.153.151" port="22" sshConfigId="64ea8f73-9fb8-4b65-95bd-76e33a16d0c3" sshConfig="forge@18.231.153.151:22 key" keyPair="true">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
           </advancedOptions>

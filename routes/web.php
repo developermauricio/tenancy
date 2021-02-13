@@ -22,6 +22,14 @@ Route::post(
 |
 */
 
+/**
+ * RUTAS QUE NECESITAN AUTENTICACIÓN Y PERTENECEN AL ADMINISTRADOR DEL SISTEMA (ROOT)
+ */
+Route::group(["middleware" => ["auth", "root"]], function () {
+    
+});
+
+
 Route::get('/', function () {
     return view('welcome');
 });
