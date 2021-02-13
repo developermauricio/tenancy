@@ -43,7 +43,34 @@ class StripeWebHookController extends WebhookController
     public function handleInvoicePaymentSucceeded($payload)
     {
         try {
-            return new Response('Webhook Handled: {handleInvoicePaymentSucceeded}', 200);
+            $data = $payload['data'];
+            $object = $data['object'];
+            $customer = $object['customer'];
+            $user = $this->getUserByStripeId($customer);
+            Log::info($user->toArray());
+            if ($user) {
+                $subscription = Subscription::whereStripeId($object['subscription'])->first();
+                if ($subscription) {
+                    $subscription->stripe_status = "active";
+                    $subscription->save();
+                }
+                /**
+                 * CREAMOS EL DOMINIO Y LA WEBSITE
+                 */
+                $fqdn = sprintf('%s.%s', $user->fqdn, env('APP_DOMAIN'));
+                $website = new Website;
+                $website->uuid = $user->fqdn;
+                app(WebsiteRepository::class)->create($website);
+                $hostname = new Hostname;
+                $hostname->fqdn = $fqdn;
+                $hostname->user_id = $user->id;
+                $hostname = app(HostnameRepository::class)->create($hostname);
+                app(HostnameRepository::class)->attach($hostname, $website);
+
+                $user->notify(new TenantCreated($fqdn));
+                return new Response('Webhook Handled: {handleInvoicePaymentSucceeded}', 200);
+            }
+            return new Response('Webhook Handled but user not found: {handleInvoicePaymentSucceeded}', 200);
         } catch (\Exception $exception) {
             Log::debug("Excepción Webhook {handleInvoicePaymentSucceeded}: " . $exception->getMessage() . ", Line: " . $exception->getLine() . ', File: ' . $exception->getFile());
             return new Response('Webhook Unhandled: {handleInvoicePaymentSucceeded}', 500);
