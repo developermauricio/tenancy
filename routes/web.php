@@ -2,6 +2,15 @@
 
 use Illuminate\Support\Facades\Route;
 
+/*=============================================
+RUTAS DE STRIPE, PERMITE REALIZAR PETICIONES
+=============================================*/
+Route::post(
+    'stripe/webhook',
+    'StripeWebHookController@handleWebhook'
+);
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
