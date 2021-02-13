@@ -4,6 +4,8 @@ namespace App\Http;
 
 use App\Http\Middleware\AdminMiddleware;
 use App\Http\Middleware\RootMiddleware;
+use App\Http\Middleware\TenancyCheckMiddleware;
+use App\Http\Middleware\TenancyOnlyMiddleware;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -67,5 +69,7 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'root' => RootMiddleware::class,
         'admin' => AdminMiddleware::class,
+        'tenancy.check' => TenancyCheckMiddleware::class,
+        'tenancy.only' => TenancyOnlyMiddleware::class,
     ];
 }
